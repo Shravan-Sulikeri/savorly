@@ -80,15 +80,23 @@ A clear, modular design — optimized for full-stack AI applications.
 ---
 ## Project Progress
 
-| Phase | Milestone | Description | Status |
-|:------|:-----------|:-------------|:--------|
-| 0 | Repository Scaffold | Folder structure, FastAPI + Next.js boilerplate, GitHub setup | ✅ Complete |
-| 1 | API Health + Stub Generator | Functional `/api/health` and `/api/generate_recipes` endpoints | ✅ Complete |
-| 2 | Nutrient Grounding | Connect pantry items to USDA FoodData Central and cache nutrient vectors | 🟡 In Progress |
-| 3 | Mood Scoring Engine | Integrate PANAS model and evidence-based mood→food scoring | ⏳ Planned |
-| 4 | Vision & OCR | Receipt and fridge image recognition using Donut / Tesseract | ⏳ Planned |
-| 5 | Expiry Intelligence | Ingredient shelf-life estimation and zero-waste optimization | ⏳ Planned |
-| 6 | Shareable Insights | Generate visual "Mood Plate" cards and export to social / meal planners | ⏳ Planned |
+**Backend**
+- 🟩🟩🟩🟩⬜ `/health` endpoint and tests  
+- 🟩🟩🟩🟩⬜ `/recipes/generate` endpoint  
+- 🟩🟩🟩⬜⬜ SQLite persistence layer  
+- 🟨⬜⬜⬜⬜ Favorites + listing  
+- ⬜⬜⬜⬜⬜ Auth + users  
+
+**Frontend**
+- 🟩⬜⬜⬜⬜ Next.js scaffold  
+- 🟨⬜⬜⬜⬜ Recipe card UI  
+- ⬜⬜⬜⬜⬜ Mood scoring UI  
+
+**AI / ML**
+- ⬜⬜⬜⬜⬜ Food–mood model  
+- ⬜⬜⬜⬜⬜ OCR ingestion  
+
+ **Overall progress:** 40%
 
 ---
 
