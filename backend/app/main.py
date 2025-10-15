@@ -1,5 +1,6 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from app.routers.generate_recipes import router as recipes_router
 
 app = FastAPI(title="Savorly API", version="0.0.1")
 
@@ -15,3 +16,8 @@ app.add_middleware(
 @app.get("/api/health")
 def health():
     return {"status": "ok", "service": "savorly-backend"}
+
+# mount routers
+app.include_router(recipes_router)
+
+
