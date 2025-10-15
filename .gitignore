@@ -17,3 +17,9 @@ frontend/.env.local
 *.swp
 .vscode/
 .idea/
+
+# Ignore local files
+backend/.venv/
+backend/savorly.db
+*.pyc
+__pycache__/
