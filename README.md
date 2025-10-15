@@ -120,11 +120,6 @@ A clear, modular design — optimized for full-stack AI applications.
 - *Open Food Facts* — Supplementary ingredient/product metadata  
 
 ---
-
-## License
-
-MIT License © 2025 [Shravan Sulikeri](https://github.com/Shravan-Sulikeri)
-
 ---
 
 ## Repository Stats
@@ -137,26 +132,37 @@ MIT License © 2025 [Shravan Sulikeri](https://github.com/Shravan-Sulikeri)
 ---
 
 
+## Project Structure
 
-## API quickstart (local)
+**Backend**
+> FastAPI + SQLModel application  
+> Handles API routes, persistence, and business logic.
 
-```bash
-# health
-BASE_URL=http://127.0.0.1:8000 ./scripts/curl/health.sh
+- `src/app.py` — App factory + router includes  
+- `src/core/` — Environment configuration  
+- `src/routers/` — `/health`, `/recipes/generate` endpoints  
+- `src/db/` — ORM models, session, repository  
 
-# generate recipes (will 404 until endpoint is implemented)
-BASE_URL=http://127.0.0.1:8000 ./scripts/curl/recipes_generate.sh
-## 4) Commit
-```bash
-git add shared/types.ts scripts/curl README.md
-git commit -m "chore: add shared API types and curl samples"
-git push
+**Shared**
+> Common data contracts between frontend and backend.
 
-## API quickstart (local)
+- `shared/types.ts` — API type definitions  
 
-```bash
-# health
-BASE_URL=http://127.0.0.1:8000 ./scripts/curl/health.sh
+**Scripts**
+> Developer tooling and quick-test utilities.
 
-# generate recipes (will 404 until endpoint is implemented)
-BASE_URL=http://127.0.0.1:8000 ./scripts/curl/recipes_generate.sh
+- `scripts/curl/health.sh`  
+- `scripts/curl/recipes_generate.sh`  
+
+**Frontend (planned)**
+> Next.js 14 + TailwindCSS UI scaffold  
+
+**Documentation**
+> `api/openapi.yaml` (API contract)  
+> `README.md` (project overview)
+
+---
+
+## License
+
+MIT License © 2025 [Shravan Sulikeri](https://github.com/Shravan-Sulikeri)
