@@ -1,0 +1,105 @@
+openapi: 3.0.3
+info:
+  title: Savorly API
+  version: "0.1.0"
+  description: |
+    Minimal contract for v0.1.
+    Type ingredients -> get 3 recipe ideas.
+
+servers:
+  - url: http://127.0.0.1:8000
+
+paths:
+  /health:
+    get:
+      summary: Health check
+      responses:
+        "200":
+            description: OK
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    status:
+                      type: string
+                      example: ok
+                    service:
+                      type: string
+                      example: savorly-backend
+  /recipes/generate:
+    post:
+      summary: Generate simple recipe ideas from ingredients
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GenerateRequest'
+            examples:
+              sample:
+                value:
+                  ingredients: ["eggs","spinach","rice","yogurt"]
+      responses:
+        "200":
+          description: Generated recipes
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenerateResponse'
+              examples:
+                ok:
+                  value:
+                    recipes:
+                      - id: "rec_1"
+                        title: "Quick eggs, spinach, rice, yogurt Bowl"
+                        ingredients: ["eggs","spinach","rice","yogurt"]
+                        steps_md: "1) Toss.\n2) Season.\n3) Serve."
+                      - id: "rec_2"
+                        title: "Cozy eggs, spinach, rice, yogurt Stir-Fry"
+                        ingredients: ["eggs","spinach","rice","yogurt"]
+                        steps_md: "1) Sauté base.\n2) Add sauce.\n3) Enjoy."
+        "400":
+          description: Bad request (validation)
+components:
+  schemas:
+    GenerateRequest:
+      type: object
+      required: [ingredients]
+      properties:
+        ingredients:
+          type: array
+          items:
+            type: string
+          minItems: 1
+          example: ["eggs","spinach"]
+        dietary_flags:
+          type: object
+          description: Optional dietary filters. Not enforced in v0.1, reserved.
+          additionalProperties:
+            type: boolean
+          example: { vegetarian: true, gluten_free: false }
+    Recipe:
+      type: object
+      required: [id, title, ingredients, steps_md]
+      properties:
+        id:
+          type: string
+          example: rec_1
+        title:
+          type: string
+        ingredients:
+          type: array
+          items:
+            type: string
+        steps_md:
+          type: string
+          description: Markdown steps
+    GenerateResponse:
+      type: object
+      required: [recipes]
+      properties:
+        recipes:
+          type: array
+          items:
+            $ref: '#/components/schemas/Recipe'
