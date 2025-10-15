@@ -1,0 +1,19 @@
+# Node
+node_modules
+.next
+out
+
+# Python
+.venv
+__pycache__
+
+# Env files
+.env
+.env.*
+frontend/.env.local
+
+# OS / Editor
+.DS_Store
+*.swp
+.vscode/
+.idea/
