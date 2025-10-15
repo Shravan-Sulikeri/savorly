@@ -129,3 +129,17 @@ MIT License © 2025 [Shravan Sulikeri](https://github.com/Shravan-Sulikeri)
 ---
 
 
+
+## API quickstart (local)
+
+```bash
+# health
+BASE_URL=http://127.0.0.1:8000 ./scripts/curl/health.sh
+
+# generate recipes (will 404 until endpoint is implemented)
+BASE_URL=http://127.0.0.1:8000 ./scripts/curl/recipes_generate.sh
+## 4) Commit
+```bash
+git add shared/types.ts scripts/curl README.md
+git commit -m "chore: add shared API types and curl samples"
+git push
